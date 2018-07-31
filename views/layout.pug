@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title= kebero-Eri-Music 
+    title= `${title} | ${help.siteName}`
     link(rel='stylesheet', href='/dist/style.css')
     meta(name="viewport" content="width=device-width, initial-scale=1")
     block styles 
@@ -21,7 +21,7 @@ html
                 a.navbar-brand(href='/') Koboro-Eri-Music
               .navbar-collapse.collapse
                 ul.nav.navbar-nav
-                  each item in h.menu
+                  each item in help.menu
                     li.active
                       a(href=item.slug)
                         span #{item.title}

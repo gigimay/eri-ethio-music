@@ -26,9 +26,6 @@ app.set('view engine', 'pug'); // we use the engine pug, mustache or EJS work gr
 
 app.use(methodOverride('_method'));// override with POST having ?_method=DELETE
 
-// serves up static files from the public folder. Anything in public/ will just be served up as the file it is
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -58,7 +55,7 @@ app.use(flash());
 
 // pass variables to our templates + all requests
 app.use((req, res, next) => {
-  res.locals.h = helpers;//locals r all the variables available to u on ur template
+  res.locals.help = helpers;//locals r all the variables available to u on ur template
   res.locals.flashes = req.flash();
   res.locals.user = req.user || null;
   res.locals.currentPath = req.path;
@@ -73,6 +70,9 @@ app.use((req, res, next) => {
 
 // After allllll that above middleware, we finally handle our own routes!
 app.use('/', routes);
+
+// serves up static files from the public folder. Anything in public/ will just be served up as the file it is
+app.use(express.static(path.join(__dirname, 'public')));
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);

@@ -15,7 +15,7 @@ require('./models/Store');
 require('./models/User');
 require('./models/Review')
 //temporarly
-// require('./handlers/mail');
+require('./handlers/mail');
 
 
 
