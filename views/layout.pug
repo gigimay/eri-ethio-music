@@ -6,6 +6,7 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1")
     block styles 
       link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
+      link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
       
   body
     block header
@@ -56,9 +57,17 @@ html
                 .flash(class=`flash--${category}`)
                   p.flash__text!= message
                   button.flash__remove(onClick="this.parentElement.remove()") &times;
-                        
+              
     block content
-    
+      - const siteName = 'Koboro-Eri-Music';
+      
+      //- - const menu =`[
+      //-   { slug: '/musicStore', title: 'MusicStore', icon: 'store' },
+      //-   { slug: '/tags', title: 'Tags', icon: 'tag' },
+      //-   { slug: '/top', title: 'Top', icon: 'top' },
+      //-   { slug: '/add', title: 'Add', icon: 'add' },
+      //-   { slug: '/contact-us', title: 'Our-Address', icon: 'location'}
+      //- ]`;
     
       
     block scripts

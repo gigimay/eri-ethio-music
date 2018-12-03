@@ -6,6 +6,7 @@ const uuid = require('uuid');//- make file names unique
 const mediaserver = require('mediaserver');
 const fs = require('fs-extra');
 const path = require('path');
+// const helpers = require('./helpers');
 
 const multerOptions = {
   storage: multer.memoryStorage(),
@@ -118,7 +119,7 @@ exports.updateStore = async (req, res) => {
 
 exports.deleteStore = async (req, res) => {
   const store = await Store.findOneAndRemove({ _id: req.params.id}).exec();
-  res.redirect('/musicStore')
+  res.redirect('/musicStores')
 }
 
 exports.getStoreBySlug = async (req, res, next) => {

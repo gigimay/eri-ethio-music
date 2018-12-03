@@ -18,7 +18,7 @@ exports.dump = (obj) => JSON.stringify(obj, null, 2);
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 
 // Some details about the site
-exports.siteName = `Koboro-Eri-Music`;
+// exports.siteName = `Koboro-Eri-Music`;
 
 exports.menu = [
   { slug: '/musicStore', title: 'MusicStore', icon: 'store' },

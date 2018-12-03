@@ -12,10 +12,10 @@ mixin musicCard(store = {})
           .store__action.store__action--edit
             a(href=`/musicStore/${store._id}/edit`)
               != help.icon('pencil')
-            form(action=`/musicStore/${store._id}?_method=DELETE`, method="post")
-              button.delete__button 
-                != help.icon('trash')
-              
+            a.trigger-btn(href="#myModal" data-toggle="modal") 
+              != help.icon('trash')
+            
+                    
       img(src=`/uploads/allsnaps/${store.photo || 'music.jpg'}`)
       audio(src=`/uploads/allsnaps/${store.audio}`)
       
@@ -23,5 +23,22 @@ mixin musicCard(store = {})
        a(href=`/store/${store.slug}`) #{store.name}
     .store__details
       p= store.description.split(' ').slice(0, 10).join(' ')
-  
-  
+      
+      
+      //- modal of confirm delete
+    if user && store.author.equals(user._id)  
+      .modal.fade(id="myModal")
+        div(class="modal-dialog modal-confirm")
+          .modal-content
+            .modal-header
+              .icon-box
+                i.material-icons &#xE5CD;
+              h4.modal-title Are you sure?
+              button.close(data-dismiss="modal" type="button" aria-hidden="true") &times;
+            .modal-body
+              p Do you really want to delete #{store.name}? This process can't be undone?
+            .modal-footer
+              button.btn.btn-info(data-dismiss="modal" type="button") Cancel
+              form(action=`/musicStore/${store._id}?_method=DELETE`, method="post")
+                button.btn.btn-danger Delete
+    
